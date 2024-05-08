@@ -1,25 +1,15 @@
-<form action="/users" method="post" accept-charset="UTF-8">
-	  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<div>
-	  <label for="username">Username:</label>
-	  <input type="text" id="username" name="user[username]" />
-	</div>
-	<div>
-	  <label for="email">Email:</label>
-	  <input type="text" id="email" name="user[email]" />
-	</div>
-	<div>
-	  <label for="pass">Password:</label>
-	  <input type="password" id="pass" name="user[password]"/>
-	</div>
-	<input type="submit" value="Create user" />
-</form>
-
-
-<%#   <form action="/users" method="post">
-    <input type="text">
-    <!-- other inputs here -->
-    <input type="submit" value="Submit This Form">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token" accept-charset="UTF-8">
-  </form> %>
- <%# %>
+<%= form_with url: "/users", method: :post do |form| %>
+  <div>
+    <%= form.label :user, "Username:" %>
+    <%= form.text_field :user, placeholder: "Username goes here"%>
+  </div>
+  <div>
+    <%= form.label :user, "Email:" %>
+    <%= form.email_field :user, placeholder: "example@example.com" %>
+  </div>
+  <div>
+    <%= form.label :user, "Password:" %>
+    <%= form.password_field :user %>
+  </div>
+    <%= form.submit "Create User" %>
+<% end %>
